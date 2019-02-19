@@ -285,46 +285,66 @@ Page({
             },
         ],
         basicData: [],
-        highColumn: [{
-                title: '场数'
-            }, {
-                title: '一节得分'
-            }, {
-                title: '二节得分'
-            }, {
-                title: '三节得分'
-            }, {
-                title: '四节得分'
-            }, {
-                title: '场均得分'
-            }, {
-                title: '场均失分'
-            }, {
-                title: '净胜分'
+        highColumn: [
+            {
+                title: '场数',
+                key: 'play_times',
             },
             {
-                title: '进攻效率'
-            }, {
-                title: '有效投篮'
-            }, {
-                title: '真实投篮'
+                title: '一节得分',
+                key: 'home1st',
+            },
+            {
+                title: '二节得分',
+                key: 'home2nd',
+            },
+            {
+                title: '三节得分',
+                key: 'home3rd',
+            },
+            {
+                title: '四节得分',
+                key: 'home4th',
+            },
+            {
+                title: '一节失分',
+                key: 'guest1st',
+            },
+            {
+                title: '二节失分',
+                key: 'guest2nd',
+            },
+            {
+                title: '三节失分',
+                key: 'guest3rd',
+            },
+            {
+                title: '四节失分',
+                key: 'guest4th',
+            },
+            {
+                title: '场均得分',
+                key: 'home_score',
+            },
+            {
+                title: '场均失分',
+                key: 'guest_score',
+            },
+            {
+                title: '净胜分',
+                key: 'win_score',
+            },
+            {
+                title: '有效命中率',
+                key: 'efg',
+            },
+            {
+                title: '真实命中率',
+                key: 'ts',
             },
         ],
-        highData: [{
-            '场数': 29,
-            '一节得分': 26.7,
-            '二节得分': 26.5,
-            '三节得分': 30.6,
-            '四节得分': 28.8,
-            '场均得分': 112.5,
-            '场均失分': 101.1,
-            '净胜分': 11.4,
-            '进攻效率': 119.8,
-            '有效投篮': 0.564,
-            '真实投篮': 0.602
-        }],
-        processColumn: [
-            {
+        highData: [],
+        processColumn: [{
                 title: '比赛时间',
                 key: 'matchTime',
             },
@@ -353,7 +373,7 @@ Page({
                 key: 'result',
             },
         ],
-        processData:[]
+        processData: []
     },
     // 标签页切换
     onChange(event) {
@@ -375,15 +395,33 @@ Page({
             playerColumn,
             againstColumn,
             basicColumn,
-            processColumn
+            processColumn,
+            highColumn,
+            highData,
         } = this.data;
         let newPlayerData = [];
         let newAgainstData = [];
         let newBasicData = [];
         let newProcessData = [];
-        let dataJson = {play_times:0,home1st:0,home2nd:0,home3rd:0,home4th:0,guest1st:0,guest2nd:0,guest3rd:0,guest4th:0,home_score:0,guest_score:0,win_score:0};
+        let newHighData = [];
+        let dataJson = {
+            play_times: 0,
+            home1st: 0,
+            home2nd: 0,
+            home3rd: 0,
+            home4th: 0,
+            guest1st: 0,
+            guest2nd: 0,
+            guest3rd: 0,
+            guest4th: 0,
+            home_score: 0,
+            guest_score: 0,
+            win_score: 0,
+            efg: 0,
+            ts:0,
+        };
         playerData.map(item => {
-            item.play_time_sec = (item.play_time_sec/60).toFixed(1);
+            item.play_time_sec = (item.play_time_sec / 60).toFixed(1);
             newPlayerData.push(this.jsonSort(playerColumn, item));
         })
         againstData.map(item => {
@@ -391,35 +429,45 @@ Page({
         })
         clubData.map(item => {
             dataJson.play_times = item.matches;
+            dataJson.efg = (item.two_point_shot_goal + 0.5 * 3 * item.three_point_shot_goal) / (item.two_point_shot_total + item.three_point_shot_total);
+            dataJson.ts = item.score / (2 * (item.two_point_shot_total + item.three_point_shot_total) + 0.44 * item.free_throw_total)
             newBasicData.push(this.jsonSort(basicColumn, item));
         })
         processData.map(item => {
             item.last_score = `${item.homeScore} : ${item.guestScore}`
             newProcessData.push(this.jsonSort(processColumn, item));
-            item.homeClubName === '辽宁本钢' ? 
-                (dataJson.home1st += item.home1st, dataJson.home2nd += item.home2nd, dataJson.home3rd += item.home3rd, dataJson.home4th += item.home4th, dataJson.guest1st += item.guest1st, dataJson.guest2nd += item.guest2nd, dataJson.guest3rd += item.guest3rd, dataJson.guest4th += item.guest4th,dataJson.home_score += item.homeScore,dataJson.guest_score += item.guestScore) : 
+            item.homeClubName === '辽宁本钢' ?
+                (dataJson.home1st += item.home1st, dataJson.home2nd += item.home2nd, dataJson.home3rd += item.home3rd, dataJson.home4th += item.home4th, dataJson.guest1st += item.guest1st, dataJson.guest2nd += item.guest2nd, dataJson.guest3rd += item.guest3rd, dataJson.guest4th += item.guest4th, dataJson.home_score += item.homeScore, dataJson.guest_score += item.guestScore) :
                 (dataJson.home1st += item.guest1st, dataJson.home2nd += item.guest2nd,
                     dataJson.home3rd += item.guest3rd, dataJson.home4th += item.guest4th,
                     dataJson.guest1st += item.home1st, dataJson.guest2nd += item.home2nd, dataJson.guest3rd += item.home3rd, dataJson.guest4th += item.home4th, dataJson.home_score += item.guestScore, dataJson.guest_score += item.homeScore);
             dataJson.win_score = dataJson.home_score - dataJson.guest_score;
         })
-        // processData.filter(item => {
-        //     item.homeClubName === '辽宁本钢' ? dataJson.home1st += item.home1st : dataJson.home1st += item.guest1st;
-            
-        // });
-        // console.log(a);
-        console.log(dataJson);
+        highData.push(dataJson);
+        highData.map(item => {
+            item.home1st = (item.home1st/item.play_times).toFixed(1); 
+            item.home2nd = (item.home2nd / item.play_times).toFixed(1);
+            item.home3rd = (item.home3rd / item.play_times).toFixed(1);
+            item.home4th = (item.home4th / item.play_times).toFixed(1);
+            item.guest1st = (item.guest1st / item.play_times).toFixed(1);
+            item.guest2nd = (item.guest2nd / item.play_times).toFixed(1);
+            item.guest3rd = (item.guest3rd / item.play_times).toFixed(1);
+            item.guest4th = (item.guest4th / item.play_times).toFixed(1);
+            item.home_score = (item.home_score/item.play_times).toFixed(1);
+            item.guest_score = (item.guest_score / item.play_times).toFixed(1);
+            item.win_score = (item.win_score / item.play_times).toFixed(1);
+            item.efg = item.efg.toFixed(3);
+            item.ts = item.ts.toFixed(3);
+            newHighData.push(this.jsonSort(highColumn, item));
+        })
         this.setData({
             playerData: newPlayerData,
             againstData: newAgainstData,
             basicData: newBasicData,
             processData: newProcessData,
+            highData: newHighData
         })
     },
-    //求和
-    // filter: function(str){
-    //     return item.homeClubName === '辽宁本钢';
-    // },
     //json数据按照指定的顺序排序
     jsonSort: function(column, data) {
         let arr = [];
@@ -445,7 +493,7 @@ Page({
         return newData;
     },
     // 时间戳处理
-    timeTamp: function(arr){
+    timeTamp: function(arr) {
         arr.map(item => {
             let time = new Date(item.matchTime);
             time = time.getFullYear() + '-' + this.length(time.getMonth() + 1) + '-' + this.length(time.getDate());
@@ -454,7 +502,7 @@ Page({
         return arr;
     },
     // 时间位处理
-    length:function(len) {
+    length: function(len) {
         return len < 10 ? `0${len}` : len;
     },
     initChart: function() {
