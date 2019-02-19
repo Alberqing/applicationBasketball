@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "球队赛程",
+  "usingComponents": {
+    "Table": "../../package/Table/Table",
+    "ec-canvas": "../../package/ec-canvas/ec-canvas",
+    "van-tab": "../../package/dist/tab/index",
+    "van-tabs": "../../package/dist/tabs/index"
+  }
+}

@@ -1,0 +1,6 @@
+<!--miniprogram/pages/storyDetail/storyDetail.wxml-->
+<view>
+    <text class="article-title">{{storyDetail.title}}</text>
+    <text class="article-time">{{storyDetail.time}}</text>
+    <view class="article-content">{{storyDetail.content}}</view>
+</view>

@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "辽篮文章",
+    "usingComponents": {
+        "van-row": "../../package/dist/row/index",
+        "van-col": "../../package/dist/col/index",
+        "van-loading": "../../package/dist/loading/index"
+    },
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "onReachBottomDistance": 20
+}

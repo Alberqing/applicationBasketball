@@ -1,0 +1,29 @@
+/* miniprogram/pages/home/home.wxss */
+
+.add-btn {
+    width: 95%;
+    border: 1px dashed #e3e3e3;
+    border-style: hidden;
+    margin: 5px auto;
+}
+
+.story {
+    width: 98%;
+    height: 60px;
+    border: 1px solid #e3e3e3;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.story-title {
+    display: block;
+    font: bold 18px "Microsoft YaHei";
+    margin: 5px;
+}
+
+.story-time {
+    display: block;
+    font: 12px "Microsoft YaHei";
+    float: right;
+    padding: 5px;
+}

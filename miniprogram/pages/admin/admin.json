@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "van-tab": "../../package/dist/tab/index",
+        "van-tabs": "../../package/dist/tabs/index",
+        "van-field": "../../package/dist/field/index",
+        "van-swipe-cell": "../../package/dist/swipe-cell/index",
+        "van-cell": "../../package/dist/cell/index"
+    },
+    "navigationBarTitleText": "管理中心"
+}

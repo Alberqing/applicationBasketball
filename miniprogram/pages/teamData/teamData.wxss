@@ -1,0 +1,12 @@
+/* pages/teamData/teamData.wxss */
+
+.data {
+    font-size: 16px;
+    margin: 5px;
+}
+
+ec-canvas {
+    width: 100%;
+    height: 500px;
+    margin-top: 5px;
+}

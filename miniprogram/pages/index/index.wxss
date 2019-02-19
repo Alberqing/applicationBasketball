@@ -1,0 +1,27 @@
+/**index.wxss**/
+
+.user-img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 40px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-message {
+    font: 14px 'Microsoft YaHei';
+    color: #999;
+}
+
+.btn {
+    width: 90%;
+    height: 40px;
+    font: 16px/40px 'Microsoft YaHei';
+    margin: 10px auto;
+    border-radius: 8px;
+}
+
+.sure-btn {
+    background: green;
+    color: #fff;
+}

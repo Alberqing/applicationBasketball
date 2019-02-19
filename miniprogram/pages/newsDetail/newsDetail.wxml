@@ -1,0 +1,7 @@
+<!--miniprogram/pages/newsDeatil/newsDetail.wxml-->
+<view>
+    <text class="news-title">{{newsDetail.title}}</text>
+    <text class="news-time">{{newsDetail.time}}</text>
+    <image src="{{newsDetail.img}}" class="news-img"></image>
+    <rich-text nodes="{{newsDetail.content}}" class="news-content"></rich-text>
+</view>

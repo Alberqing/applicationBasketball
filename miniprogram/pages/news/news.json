@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "新闻速递",
+  "usingComponents": {
+    "van-card": "../../package/dist/card/index",
+    "van-loading": "../../package/dist/loading/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": 20
+}

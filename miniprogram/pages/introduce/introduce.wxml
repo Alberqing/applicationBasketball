@@ -1,0 +1,13 @@
+<!--pages/introduce/introduce.wxml-->
+<view class="container">
+    <view class="player-introduce" wx:for="{{playerData}}" wx:key="{{}}" bindtap='playerDetail' id="{{item._id}}">
+        <view class="player-image">
+            <image src="{{item.src}}" class="image"></image>
+        </view>
+        <view class="player-text">
+            <text class="player-name">{{item.name}}</text>
+            <text class="player-prompt">{{item.prompt}}</text>
+            <text class="player-detail">查看详情>></text>
+        </view>
+    </view>
+</view>

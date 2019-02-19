@@ -1,0 +1,6 @@
+<!--miniprogram/pages/home/home.wxml-->
+<view class="story" wx:for="{{home}}" wx:key="{{}}" id="{{item._id}}" bindtap="storyDetail">
+    <text class="story-title">{{item.userStory.title}}</text>
+    <text class="story-time">{{item.userStory.time}}</text>
+</view>
+<button class="add-btn" catchtap="addStory">➕</button>

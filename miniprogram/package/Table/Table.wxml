@@ -1,0 +1,7 @@
+<!--component/Table/Table.wxml-->
+<scroll-view scroll-x="true" class="scroll-table">
+    <view wx:for="{{column}}" wx:key="{{index}}" class="table table-title">{{item.title}}</view>
+    <view wx:for="{{data}}" wx:key="{{index}}" class="table-data">
+        <view wx:for="{{item}}" wx:key="{{index}}" class="table table-column">{{item}}           </view>
+    </view>
+</scroll-view>

@@ -1,0 +1,33 @@
+/* miniprogram/pages/edit/edit.wxss */
+
+.section__title {
+    font: 12px "Microsoft YaHei";
+}
+
+.title-input {
+    width: 95%;
+    height: 30px;
+    border: 1px solid rgb(44, 43, 43);
+    border-radius: 5px;
+    margin: 3px auto;
+    font-size: 12px;
+}
+
+.content-input {
+    width: 95%;
+    height: 500px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 12px;
+    margin: 3px auto;
+}
+
+.btn-submit {
+    width: 95%;
+    height: 40px;
+    /* line-height: 40px; */
+    text-align: center;
+    background: green;
+    font: 14px/40px "Microsoft YaHei";
+    color: #f3f0f0;
+}

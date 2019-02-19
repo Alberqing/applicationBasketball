@@ -1,0 +1,23 @@
+<!--pages/teamData/teamData.wxml-->
+<van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="球队赛程">
+        <Table column="{{processColumn}}" data="{{processData}}" />
+    </van-tab>
+    <van-tab title="对阵数据">
+        <Table column="{{againstColumn}}" data="{{againstData}}" />
+    </van-tab>
+    <van-tab title="球员数据">
+        <Table column="{{playerColumn}}" data="{{playerData}}" />
+    </van-tab>
+    <van-tab title="数据分析">
+        <view class="data">基础数据</view>
+        <Table column="{{basicColumn}}" data="{{basicData}}" />
+        <view class="data">高阶数据</view>
+        <Table column="{{highColumn}}" data="{{highData}}" />
+    </van-tab>
+</van-tabs>
+<view class="data">雷达图</view>
+<view class="container">
+    <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec }}">
+    </ec-canvas>
+</view>

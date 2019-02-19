@@ -1,0 +1,58 @@
+/* pages/introduce/introduce.wxss */
+
+.container {
+    width: 100%;
+    background: #f4f4f4;
+}
+
+.player-introduce {
+    display: flex;
+    width: 96%;
+    height: 100px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.player-image {
+    display: block;
+    flex-direction: row;
+    width: 25%;
+    margin: 5px;
+}
+
+.image {
+    width: 80px;
+    height: 90px;
+}
+
+.player-text {
+    display: block;
+    flex-direction: row;
+    width: 68%;
+    margin-top: 12px;
+}
+
+.player-name {
+    display: block;
+    font: bold 16px "Microsoft YaHei";
+}
+
+.player-prompt {
+    display: block;
+    margin-top: 5px;
+    font: 12px "Microsoft YaHei";
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.player-detail {
+    font: 10px "Microsoft YaHei";
+    color: rgb(0, 119, 255);
+    float: right;
+    margin: 5px 10px 0 0;
+}

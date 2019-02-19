@@ -1,0 +1,23 @@
+<!--miniprogram/pages/news/news.wxml-->
+<swiper class="swiper" indicator-dots="{{indicator}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{current}}">
+    <block wx:for="{{movies}}" wx:key="{{}}">
+        <swiper-item>
+            <image src="{{item.url}}" class="slide-image" />
+            <text class="slide-text">{{item.txt}}</text>
+        </swiper-item>
+    </block>
+</swiper>
+<view class="container">
+    <view wx:for="{{text}}" class="news" wx:key="{{}}" bindtap="detail" id="{{item._id}}">
+        <view class="text">
+            <text class="news-title">{{item.title}}</text>
+            <text class="news-prompt">{{item.prompt}}</text>
+            <text class="news-time">{{item.time}}</text>
+        </view>
+        <view class="news-image">
+            <image src='{{item.img}}' class="news-img"></image>
+        </view>
+    </view>
+    <view class="none-data" wx:if="{{hasMoreData}}">没有更多数据了呦~</view>
+    <van-loading type="spinner" color="#000" size="20px" wx:if="{{loading}}" />
+</view>

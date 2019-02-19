@@ -1,0 +1,15 @@
+<!--pages/nav/nav.wxml-->
+<view class="container">
+    <view wx:for="{{article}}" class="article" wx:key="{{}}" bindtap='detail' id="{{item._id}}">
+        <view class="text">
+            <text class="article-title">{{item.title}}</text>
+            <text class="article-prompt">{{item.prompt}}</text>
+            <text class="article-time">{{item.time}}</text>
+        </view>
+        <view class="article-image">
+            <image src='{{item.img}}' class="article-img"></image>
+        </view>
+    </view>
+    <view class="none-data" wx:if="{{hasMoreData}}">没有更多数据了呦~</view>
+    <van-loading type="spinner" color="#000" size="20px" wx:if="{{loading}}" />
+</view>
