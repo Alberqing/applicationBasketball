@@ -1,0 +1,18 @@
+/* miniprogram/pages/personalCenter/personalCenter.wxss */
+.row{
+    display: block;
+    height: 90px;
+    margin: 5px 0;
+}
+
+.avatar{
+    margin-top: 4px;
+    width: 75px;
+    height: 75px;
+    border-radius: 8%;
+}
+
+.name{
+    margin-top: 10px;
+    font: bold 14px Microsoft YaHei;
+}

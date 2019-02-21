@@ -3,5 +3,8 @@
     <text class="article-title">{{articleDetail.title}}</text>
     <text class="article-time">{{articleDetail.time}} 落烨辽球</text>
     <image src="{{articleDetail.img}}" class="article-img"></image>
-    <rich-text nodes="{{articleDetail.content}}" class="article-content"></rich-text>
+    <!-- <rich-text nodes="{{articleDetail.content}}" class="article-content"></rich-text> -->
+    <rich-text nodes="{{nodes}}" class="article-content"></rich-text>
+    <van-icon name="{{iconName}}" bind:click="like" /> {{amount}}
+    <button><van-icon name="star-o" /> 收藏</button>
 </view>

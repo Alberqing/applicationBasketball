@@ -12,6 +12,7 @@ Page({
      */
     data: {
         player: {},
+        active: 0,
         ec: {
             lazyLoad: true,
         },

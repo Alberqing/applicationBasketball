@@ -8,6 +8,7 @@ Page({
     },
     //点击授权获取用户信息
     onGotUserInfo: function(e) {
+        // console.log(e);
         const db = wx.cloud.database();
         db.collection('userForm').add({
             data: {
@@ -16,7 +17,7 @@ Page({
             //成功获取进入小程序主页面
             success: res => {
                 wx.switchTab({
-                    url: '../home/home' //切换到home选项卡
+                    url: '../personalCenter/personalCenter' //切换到home选项卡
                 });
             },
             fail: err => {

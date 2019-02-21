@@ -1,12 +1,12 @@
 <!--miniprogram/pages/playerDetail/playerDetail.wxml-->
-<view>
-    <view class="playerDetail-title">{{player.name}}</view>
+<van-tabs active = "{{active}}">
+    <van-tab title="个人介绍">
+        <view class="playerDetail-title">{{player.name}}</view>
     <rich-text nodes="{{player.introduce}}" class="playerDetail-content"></rich-text>
     <view class="playerDetail-title">早年经历</view>
     <rich-text nodes="{{player.experience}}" class="playerDetail-content"></rich-text>
     <view class="playerDetail-title">运动生涯</view>
     <rich-text nodes="{{player.sportCareer}}" class="playerDetail-content"></rich-text>
-    <view class="playerDetail-title">数据统计</view>
     <view class="playerDetail-title">数据分析</view>
     <view class="container">
         <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec }}">
@@ -16,4 +16,7 @@
         <ec-canvas id="mychart-advance" canvas-id="mychart-graph" ec="{{ ec }}">
         </ec-canvas>
     </view>
-</view>
+    </van-tab>
+    <van-tab title="历史数据"></van-tab>
+</van-tabs>
+    

@@ -1,13 +1,17 @@
 // miniprogram/pages/articleDetail/articleDetail.js
 const app = getApp();
 const util = require('../../common/json.js');
+const richTextParse = require('../../common/richText.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        articleDetail: {}
+        articleDetail: {},
+        nodes:[],
+        iconName: 'like-o',
+        amount: 0,
     },
 
     /**
@@ -23,11 +27,27 @@ Page({
             .get({
                 success: res => {
                     util.time(res.data[0]);
+                    const nodes = richTextParse.go(res.data[0].content);
+                    console.log(nodes);
                     this.setData({
-                        articleDetail: res.data[0]
+                        articleDetail: res.data[0],
+                        nodes:nodes
                     })
                 }
             })
+    },
+    like: function(){
+        let {amount, iconName} = this.data;
+        iconName === 'like-o' ? 
+            this.setData({
+                iconName: 'like',
+                amount: amount + 1,
+            }) :
+            this.setData({
+                iconName: 'like-o',
+                amount: amount - 1,
+            })
+        
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

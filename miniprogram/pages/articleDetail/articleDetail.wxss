@@ -28,3 +28,9 @@
     margin: 5px;
     text-indent: 2em;
 }
+.rich-img {
+    display: block;
+    width: 95%;
+    height: 250px;
+    margin: 5px 2.5%;
+}

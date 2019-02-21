@@ -1,6 +1,5 @@
 function time(arr) {
     arr.map(item => {
-        console.log(item);
         let time = item.userStory.time || item.time;
         time = time.getFullYear() + '-' + this.date((time.getMonth() + 1)) + '-' + time.getDate() + ' ' + this.date(time.getHours()) + ':' + this.date(time.getMinutes());
         item.userStory.time = time;

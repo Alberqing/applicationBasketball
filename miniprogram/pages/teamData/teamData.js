@@ -11,6 +11,7 @@ Page({
     data: {
         ec: {},
         active: 0,
+        scrollTop: 0,
         playerColumn: [{
                 title: '号码',
                 key: 'player_number',
@@ -190,6 +191,10 @@ Page({
                 key: 'foul',
             },
             {
+                title: '失误',
+                key: 'turnover'
+            },
+            {
                 title: '胜',
                 key: 'wins',
             },
@@ -344,7 +349,12 @@ Page({
             },
         ],
         highData: [],
-        processColumn: [{
+        processColumn: [
+            {
+                title: '比赛序号',
+                key: 'id',
+            },
+            {
                 title: '比赛时间',
                 key: 'matchTime',
             },
@@ -515,6 +525,12 @@ Page({
             chart.setOption(this.getOption());
             return chart;
         })
+    },
+    myEventListener: function (e) {
+        const id = e.detail.id;
+        request._get(`club-matchs?match_id=${id}`).then(res => {
+            console.log(res);
+        });
     },
     getOption: function() {
         const highData = this.data.highData[0];

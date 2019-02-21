@@ -7,7 +7,7 @@ Component({
      */
     properties: {
         column: Array, // 属性名
-        data: Array
+        data: Array,
     },
 
     /**
@@ -28,13 +28,15 @@ Component({
             key: 'Address',
         }],
         data: [{
-            "Age": 11,
-            "Name": '小红',
-            "Address": '北京',
+            id:1,
+            Age: 11,
+            Name: '小红',
+            Address: '北京',
         }, {
-            "Age": 22,
-            "Name": '小明',
-            "Address": '北京',
+            id:2,
+            Age: 22,
+            Name: '小明',
+            Address: '北京',
         }]
     },
 
@@ -42,9 +44,10 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        /*
-         * 内部私有方法建议以下划线开头
-         * triggerEvent 用于触发事件
-         */
-    },
+        onClick: function (e) {
+            var myEventDetail = { id: e.currentTarget.id} // detail对象，提供给事件监听函数
+            var myEventOption = {} // 触发事件的选项
+            this.triggerEvent('myclick', myEventDetail, myEventOption)
+        }
+    }
 })

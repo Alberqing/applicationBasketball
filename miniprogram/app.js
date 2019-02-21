@@ -40,15 +40,15 @@ App({
         }).get({
             success: res => {
                 if (res && res.data && res.data.length) {
-                    if (res.data[0]._openid === 'o9Y8X0UBaJjnTmgyFtOGJiv5ZihA'){ //管理者进入管理后台
-                        wx.navigateTo({
-                            url: '../admin/admin',
-                        })
-                        } else {
+                    // if (res.data[0]._openid === 'o9Y8X0UBaJjnTmgyFtOGJiv5ZihA'){ //管理者进入管理后台
+                    //     wx.navigateTo({
+                    //         url: '../admin/admin',
+                    //     })
+                    //     } else {
                         wx.switchTab({
                             url: '../home/home',
                         })
-                    }
+                    // }
                     Promise.all([
                         request._get('7/stats/'),
                         request._get('process?clubId=7'),

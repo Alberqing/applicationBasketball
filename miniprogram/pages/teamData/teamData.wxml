@@ -1,7 +1,11 @@
 <!--pages/teamData/teamData.wxml-->
-<van-tabs active="{{ active }}" bind:change="onChange">
+<van-tabs active="{{ active }}" bind:change="onChange" sticky scroll-top="{{ scrollTop }}">
     <van-tab title="球队赛程">
-        <Table column="{{processColumn}}" data="{{processData}}" />
+        <Table 
+            column="{{processColumn}}" 
+            data="{{processData}}" 
+            bindmyclick="myEventListener" 
+        />
     </van-tab>
     <van-tab title="对阵数据">
         <Table column="{{againstColumn}}" data="{{againstData}}" />
@@ -14,10 +18,37 @@
         <Table column="{{basicColumn}}" data="{{basicData}}" />
         <view class="data">高阶数据</view>
         <Table column="{{highColumn}}" data="{{highData}}" />
+        <view class="data">雷达图</view>
+        <view class="container">
+        <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec }}">
+        </ec-canvas>
+        </view>
+    </van-tab>
+    <van-tab title="历史球员数据">
+        <van-tabs swipeable bind:change="onChange">
+             <van-tab title="95-96赛季">95-96</van-tab>
+             <van-tab title="96-97赛季">95-96</van-tab>
+             <van-tab title="97-98赛季">95-96</van-tab>
+             <van-tab title="98-99赛季">95-96</van-tab>
+             <van-tab title="99-00赛季">95-96</van-tab>
+             <van-tab title="00-01赛季">95-96</van-tab>
+             <van-tab title="01-02赛季">95-96</van-tab>
+             <van-tab title="02-03赛季">95-96</van-tab>
+             <van-tab title="03-04赛季">95-96</van-tab>
+             <van-tab title="04-05赛季">95-96</van-tab>
+             <van-tab title="05-06赛季">95-96</van-tab>
+             <van-tab title="06-07赛季">95-96</van-tab>
+             <van-tab title="07-08赛季">95-96</van-tab>
+             <van-tab title="08-09赛季">95-96</van-tab>
+             <van-tab title="09-10赛季">95-96</van-tab>
+             <van-tab title="10-11赛季">95-96</van-tab>
+             <van-tab title="11-12赛季">95-96</van-tab>
+             <van-tab title="12-13赛季">95-96</van-tab>
+             <van-tab title="13-14赛季">95-96</van-tab>
+             <van-tab title="14-15赛季">95-96</van-tab>
+             <van-tab title="15-16赛季">95-96</van-tab>
+             <van-tab title="16-17赛季">95-96</van-tab>
+             <van-tab title="17-18赛季">95-96</van-tab>
+        </van-tabs>
     </van-tab>
 </van-tabs>
-<view class="data">雷达图</view>
-<view class="container">
-    <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec }}">
-    </ec-canvas>
-</view>
