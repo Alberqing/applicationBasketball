@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "van-cell": "../../package/dist/cell/index",
+        "van-icon": "../../package/dist/icon/index",
+        "van-row": "../../package/dist/row/index",
+        "van-col": "../../package/dist/col/index",
+        "van-button": "../../package/dist/button/index"
+    }
 }

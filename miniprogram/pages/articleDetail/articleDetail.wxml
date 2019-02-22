@@ -1,10 +1,17 @@
 <!--miniprogram/pages/articleDetail/articleDetail.wxml-->
-<view>
+<view wx:if="{{block}}">
     <text class="article-title">{{articleDetail.title}}</text>
     <text class="article-time">{{articleDetail.time}} 落烨辽球</text>
-    <image src="{{articleDetail.img}}" class="article-img"></image>
-    <!-- <rich-text nodes="{{articleDetail.content}}" class="article-content"></rich-text> -->
     <rich-text nodes="{{nodes}}" class="article-content"></rich-text>
-    <van-icon name="{{iconName}}" bind:click="like" /> {{amount}}
-    <button><van-icon name="star-o" /> 收藏</button>
+    <van-row gutter="120">
+        <van-col span="11" offset="0.5">
+            <van-cell title="阅读 {{read}}" border="{{false}}" center="{{true}}" />
+        </van-col>
+        <van-col span="12" offset="0.5">
+            <van-cell title="赞 {{amount}}" border="{{false}}" icon="{{iconName}}" bind:click="like" center="{{true}}" />
+        </van-col>
+    </van-row>
+    <button class="button" size="default" plain="{{plain}}" type="warn" bindtap="collection">
+        {{collectionStatus}}
+    </button>
 </view>

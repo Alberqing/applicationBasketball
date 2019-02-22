@@ -28,3 +28,10 @@
     margin: 5px;
     text-indent: 2em;
 }
+.button {
+    width:40%;
+    margin-top: 10px;
+    height:40px;
+    font-size: 14px;
+    line-height: 40px;
+}

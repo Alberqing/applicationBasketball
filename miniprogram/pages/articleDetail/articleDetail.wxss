@@ -1,5 +1,4 @@
 /* miniprogram/pages/articleDetail/articleDetail.wxss */
-
 .article-title {
     display: block;
     font: bold 16px;
@@ -33,4 +32,12 @@
     width: 95%;
     height: 250px;
     margin: 5px 2.5%;
+    border-radius:5px;
+}
+.button {
+    width:40%;
+    margin-top: 10px;
+    height:40px;
+    font-size: 14px;
+    line-height: 40px;
 }

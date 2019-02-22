@@ -12,12 +12,19 @@ Page({
         nodes:[],
         iconName: 'like-o',
         amount: 0,
+        block: false,
+        read: 0,
+        plain: true,
+        collectionStatus: '收藏'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        let {read} = this.data;
+        read = read+1;
+        this.setData({read});
         const id = app.globalData.articleId;
         const db = wx.cloud.database();
         db.collection('article')
@@ -28,10 +35,10 @@ Page({
                 success: res => {
                     util.time(res.data[0]);
                     const nodes = richTextParse.go(res.data[0].content);
-                    console.log(nodes);
                     this.setData({
                         articleDetail: res.data[0],
-                        nodes:nodes
+                        nodes:nodes,
+                        block: true,
                     })
                 }
             })
@@ -48,6 +55,14 @@ Page({
                 amount: amount - 1,
             })
         
+    },
+    collection: function(){
+        let {plain,collectionStatus} = this.data;
+        plain ? collectionStatus='已收藏' : collectionStatus = '收藏'
+        this.setData({
+            plain: !plain,
+            collectionStatus,
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

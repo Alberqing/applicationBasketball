@@ -1,7 +1,18 @@
 <!--miniprogram/pages/newsDeatil/newsDetail.wxml-->
-<view>
+<view wx:if="{{block}}">
     <text class="news-title">{{newsDetail.title}}</text>
     <text class="news-time">{{newsDetail.time}}</text>
     <image src="{{newsDetail.img}}" class="news-img"></image>
     <rich-text nodes="{{newsDetail.content}}" class="news-content"></rich-text>
+    <van-row gutter="120">
+        <van-col span="11" offset="0.5">
+            <van-cell title="阅读 {{read}}" border="{{false}}" center="{{true}}" />
+        </van-col>
+        <van-col span="12" offset="0.5">
+            <van-cell title="赞 {{amount}}" border="{{false}}" icon="{{iconName}}" bind:click="like" center="{{true}}" />
+        </van-col>
+    </van-row>
+    <button class="button" size="default" plain="{{plain}}" type="warn" bindtap="collection">
+        {{collectionStatus}}
+    </button>
 </view>
