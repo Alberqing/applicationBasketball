@@ -1,18 +1,15 @@
 <!--miniprogram/pages/personalCenter/personalCenter.wxml-->
-<!-- <van-row  class="row"> -->
 <view class="row">
     <van-col span="6" offset="1">
-        <image src="{{pic}}" class="avatar"></image>
+        <image src="{{userData.avatarUrl}}" class="avatar"></image>
     </van-col>
     <van-col span="15">
-    <view class="name">{{name}}</view>
+        <view class="name">{{userData.nickName}}</view>
     </van-col>
 </view>
-  
-<!-- </van-row> -->
 <van-cell-group>
-    <van-cell title="我的故事" is-link icon="records" url="/pages/home/home"/>
+    <van-cell title="我的故事" is-link icon="records" url="/pages/home/home" />
     <van-cell title="收藏" is-link icon="star-o" />
-    <van-cell title="关于小程序" is-link icon="info-o"/>
-    <van-cell title="反馈" is-link icon="edit"/>
+    <van-cell title="关于小程序" is-link icon="info-o" />
+    <van-cell title="反馈" is-link icon="edit" />
 </van-cell-group>
