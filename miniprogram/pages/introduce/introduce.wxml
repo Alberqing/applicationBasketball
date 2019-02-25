@@ -1,13 +1,15 @@
 <!--pages/introduce/introduce.wxml-->
 <view class="container">
-    <view class="player-introduce" wx:for="{{playerData}}" wx:key="{{}}" bindtap='playerDetail' id="{{item._id}}">
-        <view class="player-image">
+    <van-row wx:for="{{playerData}}" wx:key="{{}}" bindtap='playerDetail' id="{{item._id}}">
+        <van-col span="5">
             <image src="{{item.src}}" class="image"></image>
-        </view>
-        <view class="player-text">
-            <text class="player-name">{{item.name}}</text>
-            <text class="player-prompt">{{item.prompt}}</text>
-            <text class="player-detail">查看详情>></text>
-        </view>
-    </view>
+        </van-col>
+        <van-col span="17" offset="2">
+            <view class="player-text">
+                <text class="player-name">{{item.name}}</text>
+                <text class="player-prompt">{{item.prompt}}</text>
+                <text class="player-detail">查看详情>></text>
+            </view>
+        </van-col>
+    </van-row>
 </view>

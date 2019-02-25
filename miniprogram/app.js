@@ -46,7 +46,7 @@ App({
                     //     })
                     //     } else {
                         wx.switchTab({
-                            url: '../home/home',
+                            url: '../teamData/teamData',
                         })
                     // }
                     Promise.all([

@@ -4,9 +4,7 @@
     width: 100%;
     background: #f4f4f4;
 }
-
-.player-introduce {
-    display: flex;
+van-row {
     width: 96%;
     height: 100px;
     margin-bottom: 10px;
@@ -14,22 +12,16 @@
     border-radius: 8px;
 }
 
-.player-image {
-    display: block;
-    flex-direction: row;
-    width: 25%;
-    margin: 5px;
-}
-
 .image {
-    width: 80px;
+    display: block;
+    margin: 5px;
+    width: 75px;
     height: 90px;
 }
 
 .player-text {
     display: block;
-    flex-direction: row;
-    width: 68%;
+    width: 95%;
     margin-top: 12px;
 }
 

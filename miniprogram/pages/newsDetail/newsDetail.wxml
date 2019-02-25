@@ -1,5 +1,5 @@
 <!--miniprogram/pages/newsDeatil/newsDetail.wxml-->
-<view wx:if="{{block}}">
+<view>
     <text class="news-title">{{newsDetail.title}}</text>
     <text class="news-time">{{newsDetail.time}}</text>
     <image src="{{newsDetail.img}}" class="news-img"></image>

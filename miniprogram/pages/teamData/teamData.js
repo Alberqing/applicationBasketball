@@ -383,12 +383,127 @@ Page({
                 key: 'result',
             },
         ],
-        processData: []
+        processData: [],
+        historyTeam:[],
+        historyTeamColumn: [
+            {
+                title: "球员",
+                key: "player_name",
+            },
+            {
+                title: "出场",
+                key: "player_matches",
+            },
+            {
+                title: "首发",
+                key: "player_starting",
+            },
+            {
+                title: "时间",
+                key: "player_time",
+            },
+            {
+                title: "两分球",
+                key: "two_point",
+            },
+            {
+                title: "命中率",
+                key: "two_point_shooting",
+            },
+            {
+                title: "三分球",
+                key: "three_point",
+            },
+            {
+                title: "命中率",
+                key: "three_point_shoot",
+            },
+            {
+                title: "罚球",
+                key: "free_point",
+            },
+            {
+                title: "命中率",
+                key: "free_point_shooting",
+            },
+            {
+                title: "前场篮板",
+                key: "off_rebounds",
+            },
+            {
+                title: "后场篮板",
+                key: "bac_rebounds",
+            },
+            {
+                title: "总篮板",
+                key: "rebounds",
+            },
+            {
+                title: "助攻",
+                key: "assists",
+            },
+            {
+                title: "盖帽",
+                key: "blocks",
+            },
+            {
+                title: "抢断",
+                key: "steals",
+            },
+            {
+                title: "失误",
+                key: "error",
+            },
+            {
+                title: "犯规",
+                key: "foul",
+            },
+            {
+                title: "得分",
+                key: "score",
+            }],
+        historyTeamData:[]
     },
     // 标签页切换
     onChange(event) {
         wx.setNavigationBarTitle({
             title: `${event.detail.title}`,
+        })
+        if(event.detail.index === 4){
+            const db = wx.cloud.database();
+            const {historyTeamColumn} = this.data;
+            db.collection('teamHistory').get({
+                success: res => {
+                    // console.log(res);
+                    const { historyTeamColumn } = this.data;
+                    this.setData({ historyTeam: res.data}); 
+                }
+            })
+            db.collection('teamHistoryData').where({
+                "season": "1995-1996"
+            }).get({
+                success: res => {
+                    let tempData = [];
+                    res.data.map(item => {
+                        tempData.push(this.jsonSort(historyTeamColumn,item));
+                    })
+                    this.setData({historyTeamData:tempData});
+                }
+            })
+        }
+    },
+    historyChange(event){
+        const db = wx.cloud.database();
+        db.collection('teamHistoryData').where({
+            "season": `${event.detail.title}`
+        }).get({
+            success: res => {
+                let tempData = [];
+                res.data.map(item => {
+                    tempData.push(this.jsonSort(historyTeamColumn, item));
+                })
+                this.setData({ historyTeamData: tempData });
+            }
         })
     },
     /**

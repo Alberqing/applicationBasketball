@@ -1,11 +1,7 @@
 <!--pages/teamData/teamData.wxml-->
-<van-tabs active="{{ active }}" bind:change="onChange" sticky scroll-top="{{ scrollTop }}">
+<van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="球队赛程">
-        <Table 
-            column="{{processColumn}}" 
-            data="{{processData}}" 
-            bindmyclick="myEventListener" 
-        />
+        <Table column="{{processColumn}}" data="{{processData}}" bindmyclick="myEventListener" />
     </van-tab>
     <van-tab title="对阵数据">
         <Table column="{{againstColumn}}" data="{{againstData}}" />
@@ -20,35 +16,29 @@
         <Table column="{{highColumn}}" data="{{highData}}" />
         <view class="data">雷达图</view>
         <view class="container">
-        <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec }}">
-        </ec-canvas>
+            <ec-canvas id="mychart-dom-graph" canvas-id="mychart-graph" ec="{{ ec }}">
+            </ec-canvas>
         </view>
     </van-tab>
     <van-tab title="历史球员数据">
-        <van-tabs swipeable bind:change="onChange">
-             <van-tab title="95-96赛季">95-96</van-tab>
-             <van-tab title="96-97赛季">95-96</van-tab>
-             <van-tab title="97-98赛季">95-96</van-tab>
-             <van-tab title="98-99赛季">95-96</van-tab>
-             <van-tab title="99-00赛季">95-96</van-tab>
-             <van-tab title="00-01赛季">95-96</van-tab>
-             <van-tab title="01-02赛季">95-96</van-tab>
-             <van-tab title="02-03赛季">95-96</van-tab>
-             <van-tab title="03-04赛季">95-96</van-tab>
-             <van-tab title="04-05赛季">95-96</van-tab>
-             <van-tab title="05-06赛季">95-96</van-tab>
-             <van-tab title="06-07赛季">95-96</van-tab>
-             <van-tab title="07-08赛季">95-96</van-tab>
-             <van-tab title="08-09赛季">95-96</van-tab>
-             <van-tab title="09-10赛季">95-96</van-tab>
-             <van-tab title="10-11赛季">95-96</van-tab>
-             <van-tab title="11-12赛季">95-96</van-tab>
-             <van-tab title="12-13赛季">95-96</van-tab>
-             <van-tab title="13-14赛季">95-96</van-tab>
-             <van-tab title="14-15赛季">95-96</van-tab>
-             <van-tab title="15-16赛季">95-96</van-tab>
-             <van-tab title="16-17赛季">95-96</van-tab>
-             <van-tab title="17-18赛季">95-96</van-tab>
+        <van-tabs bind:change="historyChange">
+            <van-tab title="{{item.season}}" wx:for="{{historyTeam}}" wx:key="season">
+                <van-row>
+                    <van-col span="11" offset="1">主教练:{{item.coach}}
+                    </van-col>
+                    <van-col span="12">助理教练:{{item.ass_coach}}</van-col>
+                </van-row>
+                <van-row>
+                    <van-col span="11" offset="1">领队:{{item.leader}}</van-col>
+                    <van-col span="12">球队管理:{{item.team_manager}}</van-col>
+                </van-row>
+                <van-row>
+                    <van-col span="11" offset="1">翻译:{{item.team_trans}}</van-col>
+                    <van-col span="12">队医:{{item.team_doctor}}</van-col>
+                </van-row>
+                <rich-text nodes="{{item.rec}}" class="rich-text"></rich-text>
+                <Table column="{{historyTeamColumn}}" data="{{historyTeamData}}" />
+            </van-tab>
         </van-tabs>
     </van-tab>
 </van-tabs>

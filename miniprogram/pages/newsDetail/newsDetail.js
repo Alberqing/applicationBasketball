@@ -13,50 +13,83 @@ Page({
         block: false,
         read: 0,
         plain: true,
-        collectionStatus: '收藏'
+        collectionStatus: '收藏',
+        likeStatus: 1,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        let {
-            read
-        } = this.data;
-        read = read + 1;
-        this.setData({
-            read
-        });
         const id = app.globalData.newsId;
         const db = wx.cloud.database();
+        const _ = db.command
+        db.collection('news').doc(`${id}`).update({
+            data: {
+                readVol: _.inc(1)
+            },
+            success(res) {
+               
+            }
+        })
         db.collection('news')
             .where({
                 _id: id
             })
             .get({
                 success: res => {
-                    util.time(res.data[0]);
+                    // util.time(res.data[0]);
+                    
                     this.setData({
                         newsDetail: res.data[0],
                         block: true,
+                        read: res.data[0].readVol,
+                        amount: res.data[0].likeVol,
+                        
                     })
+                }
+            })
+            db.collection('userForm').where({
+                _openid: app.globalData.openid
+            }).get({
+                success: res=> {
+                    if (res.data[0].likeStatus === 1) {
+                        this.setData({ iconName: 'like' });
+                    } else {
+                        this.setData({ iconName: 'like-o' })
+                    }
+                    if (res.data[0].collectionStatus === 0) {
+                        this.setData({ plain: true });
+                    } else {
+                        this.setData({ plain: false })
+                    }
+                    this.setData({
+                        likeStatus: res.data[0].likeStatus,
+                        collectionStatus: res.data[0].collectionStatus,})
                 }
             })
     },
     like: function() {
         let {
             amount,
-            iconName
+            iconName,
+            likeStatus,
         } = this.data;
-        iconName === 'like-o' ?
-            this.setData({
-                iconName: 'like',
-                amount: amount + 1,
-            }) :
-            this.setData({
-                iconName: 'like-o',
-                amount: amount - 1,
-            })
+        likeStatus === 0 ?( iconName = 'like' ,amount= amount + 1,likeStatus=1 ): (iconName = 'like-o' ,amount = amount - 1,likeStatus=0);
+        this.setData({iconName,amount,likeStatus});
+        const id = app.globalData.newsId;
+        const db = wx.cloud.database();
+        const _ = db.command
+        db.collection('news').doc(`${id}`).update({
+            data: {
+                likeVol: amount,
+                likeStatus: likeStatus,
+            },
+            success(res) {
+
+            }
+        })
+
 
     },
     collection: function() {
@@ -68,6 +101,17 @@ Page({
         this.setData({
             plain: !plain,
             collectionStatus,
+        })
+        const id = app.globalData.newsId;
+        const db = wx.cloud.database();
+        const _ = db.command
+        db.collection('news').doc(`${id}`).update({
+            data: {
+                collectionStatus: collectionStatus,
+            },
+            success(res) {
+
+            }
         })
     },
     /**

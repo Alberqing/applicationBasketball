@@ -30,7 +30,7 @@
 .rich-img {
     display: block;
     width: 95%;
-    height: 250px;
+    height: 100%;
     margin: 5px 2.5%;
     border-radius:5px;
 }
