@@ -13,6 +13,7 @@ Page({
      */
     onLoad: function(options) {
         const db = wx.cloud.database();
+        // TODO 获取用户自己的信息
         db.collection('userForm').get({
             success: res => {
                 this.setData({
