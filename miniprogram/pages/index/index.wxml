@@ -1,11 +1,9 @@
 <!--index.wxml-->
 <view class="container" wx:if="{{hidden}}">
-    <image src="user-unlogin.png" class="user-img"></image>
-    <text class="user-message">请确认是否授权</text>
+    <view class="avatar">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>  
     <button open-type='getUserInfo' bindgetuserinfo="onGotUserInfo" class="sure-btn btn">
         确认登录并授权
-    </button>
-    <button catchtap="onGetUserRefuse" class="refuse-btn btn">
-        拒绝授权
     </button>
 </view>

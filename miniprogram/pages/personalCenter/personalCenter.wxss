@@ -5,7 +5,9 @@
     margin: 5px 0;
 }
 
-.avatar{
+.avatar open-data{
+    display: block;
+    overflow: hidden;
     margin-top: 4px;
     width: 75px;
     height: 75px;
@@ -15,4 +17,5 @@
 .name{
     margin-top: 10px;
     font: bold 14px Microsoft YaHei;
+    margin-left: 5px;
 }

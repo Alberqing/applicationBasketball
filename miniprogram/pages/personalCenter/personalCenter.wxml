@@ -1,10 +1,14 @@
 <!--miniprogram/pages/personalCenter/personalCenter.wxml-->
 <view class="row">
     <van-col span="6" offset="1">
-        <image src="{{userData.avatarUrl}}" class="avatar"></image>
+        <view class="avatar">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
     </van-col>
     <van-col span="15">
-        <view class="name">{{userData.nickName}}</view>
+        <view class="name">
+            <open-data type="userNickName" lang="zh_CN"></open-data>
+        </view>
     </van-col>
 </view>
 <van-cell-group>

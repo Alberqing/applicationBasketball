@@ -23,7 +23,7 @@ Page({
                     success(res) {
                         if (res.authSetting["scope.userInfo"]) {
                             wx.switchTab({
-                                url: '../teamData/teamData',
+                                url: '../personalCenter/personalCenter',
                             })
                             Promise.all([
                                 request._get('7/stats/'),
@@ -63,15 +63,23 @@ Page({
 
     //点击授权获取用户信息
     onGotUserInfo: function(e) {
+        wx.getUserInfo({
+            success: res => {
+                this.addUser(res.userInfo);
+            },
+            fail: err => {
+                console.log(err);
+            }
+        })
+    },
+    // 添加用户信息至用户表中
+    addUser: function(userInfo){
         const db = wx.cloud.database();
         db.collection('userForm').add({
             data: {
-                userData: e.detail.userInfo
+                userInfo: userInfo
             },
-            //成功获取进入小程序主页面
             success: res => {
-                // this.queryUser();
-                // TODO 查询数据库中是否存在用户信息
                 wx.switchTab({
                     url: '../personalCenter/personalCenter' //进入个人中心
                 });
@@ -80,26 +88,6 @@ Page({
                 wx.showToast({
                     title: '失败了',
                 })
-            }
-        })
-    },
-
-    //拒绝授权
-    onGetUserRefuse: function() {
-        wx.showModal({
-            title: "提示",
-            content: "拒绝后您将无法浏览小程序，是否确认拒绝,点击返回可重新授权",
-            cancelText: "返回",
-            confirmText: "确认",
-            success: function(res) {
-                if (res.confirm) {
-                    //退出小程序
-                    wx.navigateBack({
-                        delta: -1,
-                    })
-                } else if (res.cancel) {
-                    wx.navigateBack();
-                }
             }
         })
     }

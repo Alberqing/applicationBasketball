@@ -5,22 +5,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userData: {},
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        const db = wx.cloud.database();
-        // TODO 获取用户自己的信息
-        db.collection('userForm').get({
-            success: res => {
-                this.setData({
-                    userData: res.data[0].userData,
-                })
-            }
-        })
+
     },
 
     /**
