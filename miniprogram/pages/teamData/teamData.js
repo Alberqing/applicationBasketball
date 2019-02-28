@@ -472,15 +472,40 @@ Page({
         if(event.detail.index === 4){
             const db = wx.cloud.database();
             const {historyTeamColumn} = this.data;
-            db.collection('teamHistory').get({
+            // db.collection('teamHistory').get({
+            //     success: res => {
+            //         // console.log(res);
+            //         const { historyTeamColumn } = this.data;
+            //         this.setData({ historyTeam: res.data}); 
+            //     }
+            // })
+            wx.cloud.init();
+            wx.cloud.callFunction({
+                name: 'queryDataBase',
+                data: {
+                    databaseName: 'teamHistory',
+                    page: 0,
+                    pageSize:100
+                },
                 success: res => {
-                    // console.log(res);
-                    const { historyTeamColumn } = this.data;
-                    this.setData({ historyTeam: res.data}); 
+                    this.setData({ historyTeam: res.result }); 
+                },
+                fail: err => {
+                    wx.showToast({
+                        title: '加载失败',
+                    })
+                    setTimeout(() => {
+                        wx.hideToast();
+                    }, 3000)
+                },
+                complete: () => {
+                    this.setData({
+                        loading: false
+                    })
                 }
             })
             db.collection('teamHistoryData').where({
-                "season": "1995-1996"
+                "season": "2017-2018"
             }).get({
                 success: res => {
                     let tempData = [];
@@ -490,16 +515,20 @@ Page({
                     this.setData({historyTeamData:tempData});
                 }
             })
+            
         }
     },
     historyChange(event){
+        const { historyTeamColumn } = this.data;
         const db = wx.cloud.database();
+        var that = this;
         db.collection('teamHistoryData').where({
-            "season": `${event.detail.title}`
+            "season": event.detail.title
         }).get({
             success: res => {
+                const data = res.data;
                 let tempData = [];
-                res.data.map(item => {
+                data.map(item => {
                     tempData.push(this.jsonSort(historyTeamColumn, item));
                 })
                 this.setData({ historyTeamData: tempData });
