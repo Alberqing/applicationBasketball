@@ -1,4 +1,6 @@
 <!--miniprogram/pages/admin/admin.wxml-->
+
+<template is="wxParse"/>
 <van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="新闻管理">
         <van-tabs active="{{ active }}" bind:change="onChange">

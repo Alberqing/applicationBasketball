@@ -25,6 +25,9 @@ Page({
                             wx.switchTab({
                                 url: '../personalCenter/personalCenter',
                             })
+                            // wx.navigateTo({
+                            //     url: '../admin/admin',
+                            // })
                             Promise.all([
                                 request._get('7/stats/'),
                                 request._get('process?clubId=7'),
