@@ -13,3 +13,18 @@
     right: 0;
     border-radius: 0;
 }
+
+.exchangeBtn {
+    width: 50%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 16px;
+    background: lightblue;
+    color: #fff;
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+}

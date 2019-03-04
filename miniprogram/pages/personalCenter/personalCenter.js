@@ -1,17 +1,24 @@
 // miniprogram/pages/personalCenter/personalCenter.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        admin: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        const openid = app.globalData.openid;
+        if (openid === 'o9Y8X0UBaJjnTmgyFtOGJiv5ZihA' || o9Y8X0V3jO84WKUB6Hq9t8MR_osQ) {
+            this.setData({
+                admin: true
+            })
+        }
     },
 
     /**

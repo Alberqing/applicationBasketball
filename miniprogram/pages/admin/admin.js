@@ -113,7 +113,11 @@ Page({
             newsSrc: event.detail
         });
     },
-
+    exchange: function(){
+        wx.switchTab({
+            url: '../personalCenter/personalCenter',
+        })
+    },
     onLoad: function(options) {
 
     },

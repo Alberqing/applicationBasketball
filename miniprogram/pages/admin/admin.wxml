@@ -1,6 +1,4 @@
 <!--miniprogram/pages/admin/admin.wxml-->
-
-<template is="wxParse"/>
 <van-tabs active="{{ active }}" bind:change="onChange">
     <van-tab title="新闻管理">
         <van-tabs active="{{ active }}" bind:change="onChange">
@@ -26,6 +24,7 @@
                 <van-field type="textarea" value="{{ newsContent }}" placeholder="请输入新闻内容" border="{{ true }}" bind:change="contentChange" />
                 <van-field value="{{ newsSrc }}" placeholder="请输入图片地址" border="{{ true }}" bind:change="srcChange" />
                 <button class="submitBtn" catchtap="articleSubmit">确认新增</button>
+                
             </van-tab>
             <van-tab title="文章列表">
                 <van-cell-group wx:for="{{article}}" wx:key="{{}}">
@@ -36,6 +35,5 @@
     </van-tab>
     <van-tab title="数据管理">jd</van-tab>
 </van-tabs>
-<!-- <button>新闻管理</button>
-<button>文章管理</button>
-<button>数据管理</button> -->
+
+<button class="exchangeBtn" catchtap="exchange">切换至前台</button>
