@@ -204,7 +204,12 @@ Page({
             },
         ],
         againstData: [],
-        basicColumn: [{
+        basicColumn: [
+            {
+                title: '球队',
+                key: 'name',
+            }
+            ,{
                 title: '场数',
                 key: 'matches',
             },
@@ -541,10 +546,26 @@ Page({
     onLoad: function(options) {
         this.graphComponent = this.selectComponent('#mychart-dom-graph');
         this.initChart();
+        Promise.all([
+            request._get('7/stats/'),
+            request._get('process?clubId=7'),
+            request._get('7/player-stat-cout'),
+            request._get('clubs/stats?year=20182019&league_type=2&rank_type=score'),
+            request._get('process?clubId=7'),
+        ]).then(result => {
+            storage.set('againstData', result[0].data);
+            storage.set('competition', result[1].data);
+            storage.set('playerData', result[2].data);
+            storage.set('clubData', result[3].data);
+            storage.set('processData', result[4].data);
+        }).catch(e => {
+            console.log(e)
+        })
         const playerData = storage.get('playerData');
         const againstData = storage.get('againstData');
         const processData = this.timeTamp(storage.get('processData'));
-        const clubData = this.searchLN(storage.get('clubData'));
+        // const clubData = this.searchLN(storage.get('clubData'));
+        const clubData = storage.get('clubData');
         const {
             playerColumn,
             againstColumn,
@@ -582,9 +603,10 @@ Page({
             newAgainstData.push(this.jsonSort(againstColumn, item));
         })
         clubData.map(item => {
-            dataJson.play_times = item.matches;
+            dataJson.play_times = item.wins + item.loses;
             dataJson.efg = (item.two_point_shot_goal + 0.5 * 3 * item.three_point_shot_goal) / (item.two_point_shot_total + item.three_point_shot_total);
             dataJson.ts = item.score / (2 * (item.two_point_shot_total + item.three_point_shot_total) + 0.44 * item.free_throw_total)
+            item.matches = item.wins+item.loses
             newBasicData.push(this.jsonSort(basicColumn, item));
         })
         processData.map(item => {

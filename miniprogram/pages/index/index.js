@@ -26,24 +26,6 @@ Page({
                             wx.switchTab({
                                 url: '../personalCenter/personalCenter',
                             })
-                            // wx.navigateTo({
-                            //     url: '../admin/admin',
-                            // })
-                            Promise.all([
-                                request._get('7/stats/'),
-                                request._get('process?clubId=7'),
-                                request._get('7/player-stat-cout'),
-                                request._get('clubs/stats?year=20182019&league_type=2&rank_type=score'),
-                                request._get('process?clubId=7'),
-                            ]).then(result => {
-                                storage.set('againstData', result[0].data);
-                                storage.set('competition', result[1].data);
-                                storage.set('playerData', result[2].data);
-                                storage.set('clubData', result[3].data);
-                                storage.set('processData', result[4].data);
-                            }).catch(e => {
-                                console.log(e)
-                            })
                         } else {
                             wx.hideLoading();
                             that.setData({
