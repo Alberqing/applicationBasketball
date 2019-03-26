@@ -2,45 +2,100 @@
 
 .container {
     width: 100%;
-    background: #f4f4f4;
+    background: #f2f2f2;
+}
+
+.container-topLine {
+  margin: 40rpx;
+  border-radius: 20rpx;
+  width: 94%;
+  height: 400rpx;
+  background: #fff;
+  margin-bottom: 0;
+}
+
+.topBar {
+  padding: 20rpx;
+  color: #fcd432;
+  font-size: 32rpx;
+  border-bottom: 2rpx solid #fafafa;
+}
+
+.topL-li {
+  padding: 20rpx  40rpx 20rpx 60rpx;
+  font-size: 32rpx;
+}
+
+.topContain {
+  position: relative;
+}
+
+.topL-contain {
+  color: #280e3e;
+}
+
+.topL-contain::before {
+  content: '';
+  position: absolute;
+  left: 30rpx;
+  top: 36rpx;
+  width: 14rpx;
+  height: 14rpx;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  background: #fcd432;
+  opacity: 0.4;
+}
+
+.topL-sign {
+  float: right;
+  font-size: 24rpx;
+  color: #e4521c;
+  background-color: #fceeee;
+  padding: 4rpx 10rpx;
+}
+
+.container-newList {
+  margin: 20rpx;
+  border-radius: 20rpx;
+  width: 94%;
+  box-sizing: border-box;
+  background: #fff;
+  margin-bottom: 0;
 }
 
 .news {
     display: flex;
-    width: 95%;
-    height: 120px;
+    width: 94%;
+    height: 240rpx;
     background: #fff;
-    margin: 5px auto;
-    font: 14px "Microsoft YaHei";
-    border-radius: 8px;
-}
-
-.news:first-child {
-    margin-top: 10px;
+    font: 28rpx "Microsoft YaHei";
+    border-bottom: 2rpx solid #e4e4e4;
+    margin: 20rpx;
 }
 
 .text {
     flex-direction: row;
     width: 60%;
-    margin: 8px;
+    margin: 16rpx;
 }
 
 .news-image {
     flex-direction: row;
     width: 30%;
-    margin-top: 20px;
-    margin-right: 4%;
+    margin-top: 40rpx;
+    margin-left: 20rpx;
 }
 
 .news-title {
     display: block;
-    font: bold 16px "Microsoft YaHei";
+    font: bold 32rpx "Microsoft YaHei";
 }
 
 .news-prompt {
     display: block;
-    margin: 3px 0;
-    font: 12px "Microsoft YaHei";
+    margin: 10rpx 0;
+    font: 24rpx "Microsoft YaHei";
     color: rgb(94, 90, 90);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -51,36 +106,41 @@
 
 .news-img {
     display: block;
-    width: 110px;
-    height: 80px;
+    width: 220rpx;
+    height: 160rpx;
+    border-radius: 20rpx;
+}
+
+.news-time {
+  font-size: 22rpx;
 }
 
 .swiper {
     width: 100%;
-    height: 240px;
+    height: 410rpx;
 }
 
 .slide-image {
     width: 100%;
-    height: 400px;
+    height: 410rpx;
 }
 
 .slide-text {
     z-index: 999;
     color: rgb(241, 236, 236);
     position: fixed;
-    bottom: 15px;
-    left: 5px;
+    bottom: 30rpx;
+    left: 10rpx;
     right: 0;
-    font: 12px "Microsoft YaHei";
+    font: 24rpx "Microsoft YaHei";
 }
 
 .none-data {
     display: block;
     width: 100%;
-    height: 30px;
-    line-height: 30px;
+    height: 60rpx;
+    line-height: 60rpx;
     text-align: center;
-    font-size: 12px;
+    font-size: 24rpx;
     color: #000;
 }

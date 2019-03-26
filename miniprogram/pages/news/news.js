@@ -18,6 +18,7 @@ Page({
         pageSize: 20,
         hasMoreData: false,
         loading: false,
+      topLineMessage: [{ contain: '郭士强：与吴导场下是师兄弟', sign: '超赞' }, { contain: '郭士强：与吴导场下是师兄弟', sign: '热文' }, { contain: '郭士强：与吴导场下是师兄弟', sign: '超赞' }, { contain: '郭士强：与吴导场下是师兄弟', sign: '超赞' }]
     },
 
     /**

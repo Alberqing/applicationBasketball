@@ -1,10 +1,11 @@
 {
   "navigationBarTitleText": "新闻速递",
+  "navigationBarBackgroundColor": "#fdea35",
   "usingComponents": {
     "van-card": "../../package/dist/card/index",
     "van-loading": "../../package/dist/loading/index"
   },
   "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark",
+  "backgroundTextStyle": "light",
   "onReachBottomDistance": 20
 }
