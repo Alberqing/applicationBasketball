@@ -19,6 +19,7 @@ Page({
             name: 'login',
             data: {},
             success: res => {
+                console.log(res);
                 app.globalData.openid = res.result.OPENID
                 wx.getSetting({
                     success(res) {

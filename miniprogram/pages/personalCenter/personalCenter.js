@@ -14,7 +14,7 @@ Page({
      */
     onLoad: function(options) {
         const openid = app.globalData.openid;
-        if (openid === 'o9Y8X0UBaJjnTmgyFtOGJiv5ZihA' || o9Y8X0V3jO84WKUB6Hq9t8MR_osQ) {
+        if (openid === 'o9Y8X0UBaJjnTmgyFtOGJiv5ZihA' || 'o9Y8X0V3jO84WKUB6Hq9t8MR_osQ') {
             this.setData({
                 admin: true
             })
