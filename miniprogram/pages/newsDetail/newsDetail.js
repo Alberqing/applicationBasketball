@@ -49,25 +49,6 @@ Page({
                     })
                 }
             })
-            db.collection('userForm').where({
-                _openid: app.globalData.openid
-            }).get({
-                success: res=> {
-                    if (res.data[0].likeStatus === 1) {
-                        this.setData({ iconName: 'like' });
-                    } else {
-                        this.setData({ iconName: 'like-o' })
-                    }
-                    if (res.data[0].collectionStatus === 0) {
-                        this.setData({ plain: true });
-                    } else {
-                        this.setData({ plain: false })
-                    }
-                    this.setData({
-                        likeStatus: res.data[0].likeStatus,
-                        collectionStatus: res.data[0].collectionStatus,})
-                }
-            })
     },
     like: function() {
         let {
