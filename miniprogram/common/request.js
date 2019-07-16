@@ -31,9 +31,9 @@ const http = ({
 }
 
 const getUrl = (url) => {
-    if (url.indexOf('://') == -1) {
-        url = baseUrl + url;
-    }
+        if (url.indexOf('://') == -1) {
+            url = baseUrl + url;
+        }
     return url
 }
 
