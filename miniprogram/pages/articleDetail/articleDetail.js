@@ -1,7 +1,9 @@
 // miniprogram/pages/articleDetail/articleDetail.js
 const app = getApp();
-const util = require('../../common/json.js');
+// const util = require('../../common/json.js');
+const moment = require('../../common/text-moment.js');
 const richTextParse = require('../../common/richText.js');
+
 Page({
 
     /**
@@ -33,16 +35,20 @@ Page({
             })
             .get({
                 success: res => {
-                    util.time(res.data[0]);
-                    const nodes = richTextParse.go(res.data[0].content);
+                    const data = moment.getTime(res.data);
+                    const nodes = moment.richText(data);
                     this.setData({
-                        articleDetail: res.data[0],
+                        articleDetail: data[0],
                         nodes:nodes,
                         block: true,
                     })
                 }
             })
     },
+    
+    /**
+     * 喜欢
+     */
     like: function(){
         let {amount, iconName} = this.data;
         iconName === 'like-o' ? 
@@ -56,6 +62,9 @@ Page({
             })
         
     },
+    /**
+     * 收藏
+     */
     collection: function(){
         let {plain,collectionStatus} = this.data;
         plain ? collectionStatus='已收藏' : collectionStatus = '收藏'
@@ -63,47 +72,6 @@ Page({
             plain: !plain,
             collectionStatus,
         })
-    },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
     },
 
     /**
